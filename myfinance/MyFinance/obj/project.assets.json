@@ -12734,11 +12734,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Users\\Weslen\\Documents\\CURSOS .NET\\Curso Asp Net Core Mvc\\ProjetoCurso\\AspNetCoreMvc2.1_ProjPrincipal\\MyFinance\\MyFinance\\MyFinance.csproj",
+      "projectUniqueName": "E:\\CURSOS_UDEMY\\ASPNET_CORE_MVC\\MyFinance\\MyFinance\\MyFinance.csproj",
       "projectName": "MyFinance",
-      "projectPath": "E:\\Users\\Weslen\\Documents\\CURSOS .NET\\Curso Asp Net Core Mvc\\ProjetoCurso\\AspNetCoreMvc2.1_ProjPrincipal\\MyFinance\\MyFinance\\MyFinance.csproj",
+      "projectPath": "E:\\CURSOS_UDEMY\\ASPNET_CORE_MVC\\MyFinance\\MyFinance\\MyFinance.csproj",
       "packagesPath": "C:\\Users\\Weslen\\.nuget\\packages\\",
-      "outputPath": "E:\\Users\\Weslen\\Documents\\CURSOS .NET\\Curso Asp Net Core Mvc\\ProjetoCurso\\AspNetCoreMvc2.1_ProjPrincipal\\MyFinance\\MyFinance\\obj\\",
+      "outputPath": "E:\\CURSOS_UDEMY\\ASPNET_CORE_MVC\\MyFinance\\MyFinance\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

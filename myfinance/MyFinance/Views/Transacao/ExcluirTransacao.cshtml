@@ -1,0 +1,27 @@
+﻿<h3>Deseja Excluir a Transacao Selecionada</h3>
+@{ 
+    var vData = DateTime.Parse(@ViewBag.Registro.Data.ToString()).ToString("dd/MM/yyyy");
+    var vValor = double.Parse(@ViewBag.Registro.Valor.ToString());
+    var vId = @ViewBag.Registro.Id.ToString();
+}
+<p><strong>ID:</strong>@vId</p>
+<p><strong>Data:</strong> @vData</p>
+<p><strong>Histórico:</strong> @ViewBag.Registro.Descricao.ToString()</p>
+<p><strong>Valor:</strong> @vValor</p>
+
+<button type="button" onclick="Cancelar()" class="btn btn-block btn-default">Cancelar</button>
+<button type="button" onclick="Excluir(@vId)" class="btn btn-block btn-danger">Excluir</button>
+
+
+<script>
+    function Excluir(id) {
+        window.location.href = "../Excluir/" + id;
+    }
+
+    function Cancelar() {
+        window.location.href = "../../Transacao/Index";
+    }
+
+</script>
+
+

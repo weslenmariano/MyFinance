@@ -86,7 +86,7 @@ namespace MyFinance.Models
         public void Insert()
         {
             string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql;
+            string sql="";
             if (Id == 0)
             {
                 sql = $"INSERT INTO TRANSACAO (DATA, TIPO, DESCRICAO, VALOR, CONTA_ID, PLANO_CONTAS_ID, USUARIO_ID) " +
@@ -102,18 +102,33 @@ namespace MyFinance.Models
             objDAL.ExecutaComandoSql(sql);
         }
 
-        public void Excluir(int id_conta)
+        public void Excluir(int id)
         {
-            new DAL().ExecutaComandoSql($"DELETE FROM TRANSACAO WHERE ID = '{id_conta}'");
+            new DAL().ExecutaComandoSql($"DELETE FROM TRANSACAO WHERE ID = '{id}'");
 
         }
 
-        public TransacaoModel CarregarRegistro(int? id_conta)
+        public TransacaoModel CarregarRegistro(int? id)
         {
             TransacaoModel item = new TransacaoModel();
 
             string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $"SELECT ID, DESCRICAO, TIPO, USUARIO_ID FROM PLANO_CONTAS WHERE id = {id_conta} AND USUARIO_ID = {id_usuario_logado}";
+            string sql = $"select   t.id, " +
+                                        "t.data, " +
+                                        "t.tipo, " +
+                                        "t.valor, " +
+                                        "t.descricao, " +
+                                        "t.conta_id, " +
+                                        "c.nome as conta, " +
+                                        "t.plano_contas_id, " +
+                                        "p.descricao as plano_conta " +
+                                "from transacao t " +
+                                "inner join conta c " +
+                                "on t.conta_id = c.id " +
+                                "inner join plano_contas p " +
+                                "on t.plano_contas_id = p.id " +
+                                $" where t.Usuario_Id = {id_usuario_logado} AND t.id = {id} ";
+            
 
 
 
@@ -122,8 +137,14 @@ namespace MyFinance.Models
 
 
             item.Id = int.Parse(dt.Rows[0]["ID"].ToString());
-            item.Descricao = dt.Rows[0]["DESCRICAO"].ToString();
+            item.Data = dt.Rows[0]["DATA"].ToString();
             item.Tipo = dt.Rows[0]["TIPO"].ToString();
+            item.Descricao = dt.Rows[0]["DESCRICAO"].ToString();
+            item.Valor = double.Parse(dt.Rows[0]["VALOR"].ToString());
+            item.Conta_Id = int.Parse(dt.Rows[0]["CONTA_ID"].ToString());
+            item.Plano_Conta_Id = int.Parse(dt.Rows[0]["PLANO_CONTAS_ID"].ToString());
+
+
             //item.Usuario_Id = int.Parse(dt.Rows[0]["USUARIO_ID"].ToString());
 
             return item;
