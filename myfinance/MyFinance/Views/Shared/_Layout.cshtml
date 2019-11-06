@@ -31,9 +31,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                   
+
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li id="menuContato" style="display:none;"><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
                 @using Microsoft.AspNetCore.Http;
                 @inject IHttpContextAccessor HttpContextAccessor
@@ -80,9 +81,13 @@
         var divNome = document.getElementById("NomeUsuarioLogado");
         if (nome != "") {
             divNome.innerHTML = "Olá " + nome + " <a href='..\\Usuario\\Login\\0'>(Sair)</a>";
+
+            var menuContato = document.getElementById("menuContato");
+            menuContato.style.display = "inline";
         }
         else {
-            divNome.innerHTML = "Olá visitante <a href='..\\Home\\Index'>(Login)</a>" ;
+            divNome.innerHTML = "Olá visitante <a href='..\\Home\\Index'>(Login)</a>";
+            window.location.href = '../Usuario/Login';
         }
 
         divNome.style = "color:#ffffff; text-align:right; height:50px;padding-top:14px;"

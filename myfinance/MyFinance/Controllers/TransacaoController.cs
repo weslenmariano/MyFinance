@@ -26,10 +26,6 @@ namespace MyFinance.Controllers
         {
             return View();
         }
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
 
         [HttpPost]
         public IActionResult Registrar(TransacaoModel form)
@@ -74,6 +70,41 @@ namespace MyFinance.Controllers
             TransacaoModel objTransacao = new TransacaoModel(_httpContextAccessor);
             objTransacao.Excluir(id);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [HttpPost]
+        public IActionResult Extrato(TransacaoModel formulario)
+        {
+            formulario._httpContextAccessor = _httpContextAccessor;
+            ViewBag.ListaTransacao = formulario.ListaTransacao();
+            ViewBag.ListaContas = new ContaModel(_httpContextAccessor).ListaConta();
+            return View();
+        }
+
+        public IActionResult Dashboard()
+        {
+
+
+            List<Dashboard> lista = new Dashboard(_httpContextAccessor).RetornarDadosGraficoPie();
+
+            string valores = "";
+            string labels = "";
+            string cores = "";
+
+            var randon = new Random();
+           // var color = String.Format("#{0:X6}", randon.Next(0x1000000));
+
+            for (int i = 0; i < lista.Count; i++)
+            {
+                valores += lista[i].Total.ToString() + ",";
+                labels += "'"+lista[i].PlanoConta.ToString() + "',";
+                cores += "'"+String.Format("#{0:X6}", randon.Next(0x1000000)) +"',";
+            }
+            ViewBag.Valores = valores;
+            ViewBag.Labels = labels;
+            ViewBag.Cores = cores;
+            return View();
         }
     }
 }

@@ -15,6 +15,8 @@ namespace MyFinance.Models
         [Required(ErrorMessage = "Informe a Data!")]
         public string Data { get; set; }
 
+        public string DataFinal { get; set; } // utlizado para filtros
+
         public string Tipo { get; set; }
         public Double Valor { get; set; }
         [Required(ErrorMessage = "Informe a Descricao!")]
@@ -25,6 +27,7 @@ namespace MyFinance.Models
         public string DescricaoPlanoConta { get; set; }
 
         public IHttpContextAccessor _httpContextAccessor { get; set; }
+        public HttpContextAccessor HttpContextAccessor { get; internal set; }
 
         public TransacaoModel()
         {
@@ -41,6 +44,23 @@ namespace MyFinance.Models
             List<TransacaoModel> lista = new List<TransacaoModel>();
             TransacaoModel item;
 
+            //Utilizado pela View Extrato
+            string filtro = "";
+            if(Data != null && DataFinal != null)
+            {
+                filtro += $" and t.Data >= '{DateTime.Parse(Data).ToString("yyyy/MM/dd")}' and t.Data <= '{DateTime.Parse(DataFinal).ToString("yyyy/MM/dd")}' ";
+            }
+            
+            if (Tipo != null && Tipo != "A")
+            {
+                filtro += $" and t.Tipo = '{Tipo}' ";
+            }
+
+            if (Conta_Id != 0)
+            {
+                filtro += $" and t.conta_id = '{Conta_Id}' ";
+            }
+            // fim
             string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
             if (id_usuario_logado != null && id_usuario_logado != "0")
             {
@@ -58,7 +78,8 @@ namespace MyFinance.Models
                                 "on t.conta_id = c.id "+
                                 "inner join plano_contas p "+
                                 "on t.plano_contas_id = p.id "+
-                                $" where t.Usuario_Id = {id_usuario_logado} order by t.data desc limit 10";
+                                $" where t.Usuario_Id = {id_usuario_logado} {filtro}" +
+                                $"order by t.data desc limit 10";
 
                 DAL objDAL = new DAL();
                 DataTable dt = objDAL.RetDataTable(sql);
@@ -151,5 +172,57 @@ namespace MyFinance.Models
 
 
         }
+
     }
+    
+    public class Dashboard
+    {
+        public IHttpContextAccessor _httpContextAccessor { get; set; }
+        //public HttpContextAccessor HttpContextAccessor { get; internal set; }
+
+        public Dashboard()
+        {
+
+        }
+
+        public Dashboard(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+
+        public double Total { get; set; }
+        public string PlanoConta { get; set; }
+        
+
+        public List<Dashboard> RetornarDadosGraficoPie()
+        {
+            List<Dashboard> lista = new List<Dashboard>();
+            Dashboard item;
+
+            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+
+            string sql = " select sum(t.valor) as total, p.Descricao "+
+                         " from transacao as t "+
+                         " inner join plano_contas as p " +
+                         " on t.Plano_Contas_Id = p.Id " +
+                         " where t.Tipo = 'D' " +
+                         $" and t.usuario_id = {id_usuario_logado}" +
+                         " GROUP BY P.Descricao ";
+
+            DAL objDal = new DAL();
+            DataTable dt = new DataTable();
+            dt = objDal.RetDataTable(sql);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                item = new Dashboard();
+                item.Total = double.Parse(dt.Rows[i]["Total"].ToString());
+                item.PlanoConta = dt.Rows[i]["Descricao"].ToString();
+                lista.Add(item);
+            }
+            return lista;
+        }
+    }
+
 }

@@ -25,6 +25,11 @@ namespace MyFinance.Models
 
         }
 
+        private string IdUsuarioLogado()
+        {
+            return _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+        }
+
         public PlanoContaModel(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
@@ -35,10 +40,10 @@ namespace MyFinance.Models
             List<PlanoContaModel> lista = new List<PlanoContaModel>();
             PlanoContaModel item;
 
-            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            if (id_usuario_logado != null && id_usuario_logado != "0")
+           
+            if (IdUsuarioLogado() != null && IdUsuarioLogado() != "0")
             {
-                string sql = $"SELECT ID, DESCRICAO, TIPO, USUARIO_ID FROM PLANO_CONTAS WHERE USUARIO_ID = {id_usuario_logado}";
+                string sql = $"SELECT ID, DESCRICAO, TIPO, USUARIO_ID FROM PLANO_CONTAS WHERE USUARIO_ID = {IdUsuarioLogado()}";
 
                 DAL objDAL = new DAL();
                 DataTable dt = objDAL.RetDataTable(sql);
@@ -67,17 +72,17 @@ namespace MyFinance.Models
 
         public void Insert()
         {
-            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            
             string sql;
             if (Id == 0)
             {
-                 sql = $"INSERT INTO PLANO_CONTAS (DESCRICAO, TIPO, USUARIO_ID) VALUES ('{Descricao}','{Tipo}','{id_usuario_logado}')";
+                 sql = $"INSERT INTO PLANO_CONTAS (DESCRICAO, TIPO, USUARIO_ID) VALUES ('{Descricao}','{Tipo}','{IdUsuarioLogado()}')";
             }
             else
             {
                 sql = $"UPDATE PLANO_CONTAS SET DESCRICAO = '{Descricao}', " +
                       $"TIPO ='{Tipo}' " +
-                      $"WHERE USUARIO_ID = '{id_usuario_logado}' and ID = '{Id}'";
+                      $"WHERE USUARIO_ID = '{IdUsuarioLogado()}' and ID = '{Id}'";
             }
             DAL objDAL = new DAL();
             objDAL.ExecutaComandoSql(sql);
@@ -93,8 +98,8 @@ namespace MyFinance.Models
         {
             PlanoContaModel item = new PlanoContaModel();
 
-            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $"SELECT ID, DESCRICAO, TIPO, USUARIO_ID FROM PLANO_CONTAS WHERE id = {id_conta} AND USUARIO_ID = {id_usuario_logado}";
+            
+            string sql = $"SELECT ID, DESCRICAO, TIPO, USUARIO_ID FROM PLANO_CONTAS WHERE id = {id_conta} AND USUARIO_ID = {IdUsuarioLogado()}";
 
             
 

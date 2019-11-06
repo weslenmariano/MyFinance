@@ -166,3 +166,4 @@ E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\MyFi
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\MyFinance.pdb
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\MyFinance.csproj.CopyComplete
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Transacao\ExcluirTransacao.g.cshtml.cs
+E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LayoutLogin.g.cshtml.cs
