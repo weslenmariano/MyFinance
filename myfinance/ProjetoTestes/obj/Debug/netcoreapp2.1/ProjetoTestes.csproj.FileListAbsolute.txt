@@ -1,0 +1,4 @@
+E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\ProjetoTestes\obj\Debug\netcoreapp2.1\ProjetoTestes.csprojAssemblyReference.cache
+E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\ProjetoTestes\obj\Debug\netcoreapp2.1\ProjetoTestes.csproj.CoreCompileInputs.cache
+E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\ProjetoTestes\obj\Debug\netcoreapp2.1\ProjetoTestes.AssemblyInfoInputs.cache
+E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\ProjetoTestes\obj\Debug\netcoreapp2.1\ProjetoTestes.AssemblyInfo.cs

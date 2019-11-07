@@ -149,8 +149,10 @@ E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razo
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LayoutLogin.g.cshtml.cs
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Transacao\Dashboard.g.cshtml.cs
+E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Transacao\ExcluirTransacao.g.cshtml.cs
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Transacao\Extrato.g.cshtml.cs
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Transacao\Index.g.cshtml.cs
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Transacao\Registrar.g.cshtml.cs
@@ -165,5 +167,3 @@ E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\MyFi
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\MyFinance.dll
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\MyFinance.pdb
 E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\MyFinance.csproj.CopyComplete
-E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Transacao\ExcluirTransacao.g.cshtml.cs
-E:\CURSOS_UDEMY\ASPNET_CORE_MVC\MyFinance\MyFinance\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LayoutLogin.g.cshtml.cs
